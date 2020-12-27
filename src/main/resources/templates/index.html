@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title> Users Record System </title>
+ <style>
+        .container{
+            width: 90%;
+            margin: auto;
+        }
+        table{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <h1>Users Record</h1>
+        <a href="/add-new-user">Add news Users</a>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>S.n</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+                      
+                <tr th:each="users : ${listUsers}">
+               		 <td th:text="${users.id}">User Id</td>
+               		 <td th:text="${users.name}">Name</td>
+               		 <td th:text="${users.phone}">Phone</td>
+               		 <td th:text="${users.address}">Address</td>  
+               		 <td>
+               		 	<a th:href="@{'/edit/'+ ${users.id}}">Edit</a>
+               		 	&ensp;
+               		 	<a th:href="@{'/delete/'+ ${users.id}}">Delete</a>
+               		 </td>                 
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
